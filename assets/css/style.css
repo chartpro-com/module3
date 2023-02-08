@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif, Times;
+}
+
+#password-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto;
+    background-color: rgb(242, 161, 161);
+}
