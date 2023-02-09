@@ -17,13 +17,40 @@ generateButton.addEventListener("click", function() {
   if (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
     alert("At least one character type must be selected.");
     return;
-
   }
 
-//   change to display of the password after sending arguments to a function
-  passwordDisplay.textContent = length + " " + includeLowercase+ " " + includeUppercase;
-
+  var password = generatePassword(
+    length,
+    includeLowercase,
+    includeUppercase,
+    includeNumeric,
+    includeSpecial
+  );
+  passwordDisplay.textContent = password;
 });
 
+function generatePassword(length, includeLowercase, includeUppercase, includeNumeric, includeSpecial) {
+  var password = "";
+  // must set to an array
+  var characterTypes = [];
+  if (includeLowercase) {
+    characterTypes.push("abcdefghijklmnopqrstuvwxyz");
+  }
+  if (includeUppercase) {
+    characterTypes.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  }
+  if (includeNumeric) {
+    characterTypes.push("0123456789");
+  }
+  if (includeSpecial) {
+    characterTypes.push("!@#$%^&*()_+-=[]{}\\|;':\",.<>/?`~");
+  }
 
 
+  for (i = 0; i < length; i++) {
+    var tempType = characterTypes[Math.floor(Math.random() * characterTypes.length)];
+    password += tempType[Math.floor(Math.random() * tempType.length)];
+
+  }
+  return password;
+}
